@@ -1,0 +1,401 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_bye
+
+- story: fallback
+  steps:
+    - action: utter_greet
+
+- story: greeting path 1
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: get movie by actor
+  steps:
+    - intent: movie_search_by_actor
+    - action: utter_movie_search_by_actor
+    - action: action_movie_search_by_actor
+
+- story: get movie by director
+  steps:
+    - intent: movie_search_by_director
+    - action: utter_movie_search_by_director
+    - action: action_movie_search_by_director
+
+- story: get release year for given movie
+  steps:
+    - intent: release_year_search_by_movie
+    - action: utter_search_release_year_for_movie
+    - action: action_search_release_year_for_movie
+
+- story: get overview for movie
+  steps:
+    - intent: search_overview_for_movie
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+
+- story: get rating for movie
+  steps:
+    - intent: search_rating_for_movie
+    - action: utter_search_rating_for_movie
+    - action: action_search_rating_for_movie
+
+- story: get popular movies by year
+  steps:
+    - intent: search_popularity_by_year
+    - action: utter_search_popularity_by_year
+    - action: action_search_popularity_by_year
+
+- story: get movie director
+  steps:
+    - intent: search_movie_director
+    - action: utter_search_movie_director
+    - action: action_search_movie_director
+
+- story: get movie actors
+  steps:
+    - intent: search_movie_actors
+    - action: utter_search_movie_actors
+    - action: action_search_movie_actors
+
+- story: get similar movies
+  steps:
+    - intent: search_similar_movies
+    - action: utter_search_similar_movies
+    - action: action_search_similar_movies
+
+- story: get introduction
+  steps:
+    - intent: get_introduction
+    - action: utter_introduction
+
+- story: bye path 1
+  steps:
+    - intent: bye
+    - action: utter_bye
+
+- story: happy path 1
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_introduction
+    - action: utter_introduction
+    - intent: movie_search_by_director
+    - slot_was_set:
+      - director: Oliver Stone
+    - action: utter_movie_search_by_director
+    - action: action_movie_search_by_director
+    - intent: search_movie_actors
+    - slot_was_set:
+      - movie_title: Fight Club
+    - action: utter_search_movie_actors
+    - action: action_search_movie_actors
+    - intent: bye
+    - action: utter_bye
+
+- story: happy path 2
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_introduction
+    - action: utter_introduction
+    - intent: movie_search_by_actor
+    - slot_was_set:
+      - actor: Brad Pitt
+    - action: utter_movie_search_by_actor
+    - action: action_movie_search_by_actor
+    - intent: release_year_search_by_movie
+    - slot_was_set:
+      - movie_title: Fight Club
+    - action: utter_search_release_year_for_movie
+    - action: action_search_release_year_for_movie
+    - intent: search_rating_for_movie
+    - slot_was_set:
+      - movie_title: Fight Club
+    - action: utter_search_rating_for_movie
+    - action: action_search_rating_for_movie
+
+- story: happy path 3
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_introduction
+    - action: utter_introduction
+    - intent: movie_search_by_director
+    - slot_was_set:
+      - director: Ridley Scott
+    - action: utter_movie_search_by_director
+    - action: action_movie_search_by_director
+    - intent: release_year_search_by_movie
+    - slot_was_set:
+      - movie_title: Alien
+    - action: utter_search_release_year_for_movie
+    - action: action_search_release_year_for_movie
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Alien
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: search_rating_for_movie
+    - slot_was_set:
+      - movie_title: Alien
+    - action: utter_search_rating_for_movie
+    - action: action_search_rating_for_movie
+
+- story: happy path 4
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_introduction
+    - action: utter_introduction
+    - intent: movie_search_by_director
+    - slot_was_set:
+      - director: Stanley Kubrick
+    - action: utter_movie_search_by_director
+    - action: action_movie_search_by_director
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: The Shining
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: release_year_search_by_movie
+    - action: utter_search_release_year_for_movie
+    - action: action_search_release_year_for_movie
+    - intent: search_rating_for_movie
+    - slot_was_set:
+      - movie_title: The Shining
+    - action: utter_search_rating_for_movie
+    - action: action_search_rating_for_movie
+
+- story: happy path 5
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_introduction
+    - action: utter_introduction
+    - intent: movie_search_by_actor
+    - slot_was_set:
+      - actor: Jennifer Lawrence
+    - action: utter_movie_search_by_actor
+    - action: action_movie_search_by_actor
+    - intent: movie_search_by_actor
+    - slot_was_set:
+      - actor: Sting
+    - action: utter_movie_search_by_actor
+    - action: action_movie_search_by_actor
+    - intent: movie_search_by_actor
+    - slot_was_set:
+      - actor: Brad Pitt
+    - action: utter_movie_search_by_actor
+    - action: action_movie_search_by_actor
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Se7en
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: release_year_search_by_movie
+    - slot_was_set:
+      - movie_title: Se7en
+    - action: utter_search_release_year_for_movie
+    - action: action_search_release_year_for_movie
+
+- story: happy path 6
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_introduction
+    - action: utter_introduction
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: alien
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: search_popularity_by_year
+    - slot_was_set:
+      - release: 2019
+    - action: utter_search_popularity_by_year
+    - action: action_search_popularity_by_year
+    - intent: release_year_search_by_movie
+    - slot_was_set:
+      - movie_title: Joker
+    - action: utter_search_release_year_for_movie
+    - action: action_search_release_year_for_movie
+    - intent: search_movie_director
+    - slot_was_set:
+      - movie_title: Joker
+    - action: utter_search_movie_director
+    - action: action_search_movie_director
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Joker
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    
+- story: happy path 7
+  steps:
+    - intent: search_popularity_by_year
+    - slot_was_set:
+      - release: 2019
+    - action: utter_search_popularity_by_year
+    - action: action_search_popularity_by_year
+    - intent: search_movie_director
+    - slot_was_set:
+      - movie_title: Logan
+    - action: utter_search_movie_director
+    - action: action_search_movie_director
+    - intent: search_rating_for_movie
+    - slot_was_set:
+      - movie_title: Logan
+    - action: utter_search_rating_for_movie
+    - action: action_search_rating_for_movie
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Logan
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: release_year_search_by_movie
+    - slot_was_set:
+      - movie_title: Logan
+    - action: utter_search_release_year_for_movie
+    - action: action_search_release_year_for_movie
+    
+- story: happy path 8
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_introduction
+    - action: utter_introduction
+    - intent: search_popularity_by_year
+    - slot_was_set:
+      - release: 1994
+    - action: action_search_popularity_by_year
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Pulp Fiction
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: search_movie_actors
+    - slot_was_set:
+      - movie_title: Pulp Fiction
+    - action: utter_search_movie_actors
+    - action: action_search_movie_actors
+    - intent: search_movie_director
+    - slot_was_set:
+      - movie_title: Pulp Fiction
+    - action: utter_search_movie_director
+    - action: action_search_movie_director
+
+- story: happy path 9
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: get_introduction
+    - action: utter_introduction
+    - intent: search_popularity_by_year
+    - slot_was_set:
+      - release: 1994
+    - action: utter_search_popularity_by_year
+    - action: action_search_popularity_by_year
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Pulp Fiction
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: search_movie_actors
+    - slot_was_set:
+      - movie_title: Pulp Fiction
+    - action: utter_search_movie_actors
+    - action: action_search_movie_actors
+    - intent: search_movie_director
+    - slot_was_set:
+      - movie_title: Pulp Fiction
+    - action: utter_search_movie_director
+    - action: action_search_movie_director
+    - intent: search_popularity_by_year
+    - slot_was_set:
+      - release: 2018
+    - action: utter_search_popularity_by_year
+    - action: action_search_popularity_by_year
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Black Panther
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: release_year_search_by_movie
+    - slot_was_set:
+      - movie_title: Black Panther
+    - action: utter_search_release_year_for_movie
+    - action: action_search_release_year_for_movie
+    
+- story: happy path 10
+  steps:
+    - intent: search_popularity_by_year
+    - slot_was_set:
+      - release: 2007
+    - action: utter_search_popularity_by_year
+    - action: action_search_popularity_by_year
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Coco
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: search_movie_director
+    - slot_was_set:
+      - movie_title: Coco
+    - action: action_search_movie_director
+    - intent: search_movie_actors
+    - slot_was_set:
+      - movie_title: Coco
+    - action: utter_search_movie_actors
+    - action: action_search_movie_actors
+    - intent: search_similar_movies
+    - slot_was_set:
+      - movie_title: Coco
+    - action: utter_search_similar_movies
+    - action: action_search_similar_movies
+    
+- story: happy path 11
+  steps:
+    - intent: search_overview_for_movie
+    - slot_was_set:
+      - movie_title: Coco
+    - action: utter_search_overview_for_movie
+    - action: action_search_overview_for_movie
+    - intent: search_similar_movies
+    - slot_was_set:
+      - movie_title: Coco
+    - action: utter_search_similar_movies
+    - action: action_search_similar_movies
+    - intent: search_movie_actors
+    - slot_was_set:
+      - movie_title: Coco
+    - action: utter_search_movie_actors
+    - action: action_search_movie_actors
