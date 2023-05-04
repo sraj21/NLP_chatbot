@@ -221,7 +221,7 @@ nlu:
     - Give popular movies of [1999](release)
 
 - intent: search_movie_director
-  examples: |
+  examples: | 
     - Who directed [Black Panther](movie_title)
     - who was the director of [I am not a witch](movie_title)
     - Get me the director of [Mission Impossible Fallout](movie_title)
@@ -340,6 +340,8 @@ nlu:
     - Daniel Day-Lewis
     - Robert De Niro
     - Philip Seymour Hoffman
+    - hugh jackman
+    - robert downey jr.
 
 - lookup: director
   examples: |
@@ -354,3 +356,4 @@ nlu:
     - some dude
     - beach dude from ocean beach
     - Francis Ford Coppola
+

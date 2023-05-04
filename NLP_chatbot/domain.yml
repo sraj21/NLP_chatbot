@@ -62,7 +62,7 @@ responses:
     - text: "Looking for similar movies to {movie_title}"
 
   utter_introduction:
-    - text: "hi! I am MoviCHTR. I can search movies by director, actor, get you a release date or rating using a chosen title. I am even trying to learn movie popularity based on a particular year"
+    - text: "hi! I can search movies by director, actor, get you a release date or rating using a chosen title. I am even trying to learn movie popularity based on a particular year"
 
   utter_bye:
     - text: "Bye"
@@ -72,7 +72,7 @@ responses:
 
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
 
 
 actions:

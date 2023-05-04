@@ -40,9 +40,9 @@ def get_movies_by_crew(query):
 
     response_json = json.loads(response)
 
-    results = response_json['results']
+    resultsList = response_json['results']
 
-    movies = parseMoviesWith(results, query)
+    movies = parseMoviesWith(resultsList, query)
 
     return movies
 
@@ -99,13 +99,15 @@ def get_attributes_by_movie_title(query):
 # finds known for movies for given person
 def parseMoviesWith(json_data, person):
     movies = []
-
+    i=1
     for results in json_data:
         if results['media_type'] == 'person':
             known_for = results['known_for']
             for movie in known_for:
                 title = movie['original_title']
                 movies.append(title)
+                i=i+1
+                if i>5: return movies
 
     return movies
 
@@ -114,7 +116,7 @@ def parseMoviesWith(json_data, person):
 def get_similar_movies(query):
     url = BASE_URL + 'movie/{}/similar'.format(query)
 
-    params = {'api_key': API_KEY}
+    params = {'api_key': API_KEY, 'original_language': 'en'}
 
     response = requests.get(url, params=params).text
 

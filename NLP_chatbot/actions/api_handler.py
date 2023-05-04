@@ -124,3 +124,4 @@ def get_similar_movies(query):
     results = response_json['results']
 
     return results
+
